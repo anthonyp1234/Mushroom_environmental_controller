@@ -89,7 +89,7 @@ relay_time = datetime.datetime.now()
 #########################
 ##FOR LOOP STARTS HERE###
 while True:
-
+  import RPi.GPIO as GPIO
   if (datetime.datetime.now() - measure_time).total_seconds() > MEASUREMENT_TIME:
     measure_time = datetime.datetime.now()
     #######################################
@@ -140,19 +140,7 @@ while True:
       humidity_relay.turn_off()
       print "humidity too high"
       
-   import RPi.GPIO as GPIO
+
 
 
   #Is time X Passed, if so trigger Air intake.
-
-
-
-
-
-
-
-
-
-
-
-
