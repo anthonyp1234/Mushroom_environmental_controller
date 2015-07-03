@@ -95,7 +95,7 @@ while True:
     #######################################
     ##Check here the Lastest Readings##
     for counter, pin in enumerate(sensors_pins):
-      humidity, temperature = (8, 21) #Adafruit_DHT.read_retry(sensor_type[counter], sensors_pins[counter])
+      humidity, temperature = (80, 21) #Adafruit_DHT.read_retry(sensor_type[counter], sensors_pins[counter])
       if humidity is not None and temperature is not None:
         temp_classes[counter].add_temperature(temperature)
         hum_classes[counter].add_humidity(humidity)
@@ -139,6 +139,8 @@ while True:
     else:
       humidity_relay.turn_off()
       print "humidity too high"
+      
+   import RPi.GPIO as GPIO
 
 
   #Is time X Passed, if so trigger Air intake.

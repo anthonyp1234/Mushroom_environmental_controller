@@ -26,7 +26,7 @@ class measurementThreshold:
         self.average = average / self.average_over
         self.averages.append(self.average)
       else:
-        self.average = sum(measurement_array) / self.average_over
+        self.average = sum(measurement_array) / len(measurement_array)
         self.averages.append(self.average)
 
     self.overall_average = sum(self.averages) / len(self.averages)
