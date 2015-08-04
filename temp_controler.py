@@ -89,7 +89,7 @@ relay_time = datetime.datetime.now()
 #########################
 ##FOR LOOP STARTS HERE###
 while True:
-  import RPi.GPIO as GPIO
+
   if (datetime.datetime.now() - measure_time).total_seconds() > MEASUREMENT_TIME:
     measure_time = datetime.datetime.now()
     #######################################
