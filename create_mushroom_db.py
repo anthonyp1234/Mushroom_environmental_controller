@@ -35,7 +35,7 @@ curs.execute('''CREATE TABLE triggers
 curs.execute('''CREATE TABLE states
              (date text, temp real, trelay real,  hum real, hrelay real, c02 integer, c02relay real)''')             
              
-##### creat inital trigger values
+##### creat initial trigger values
 curs.execute('''INSERT INTO triggers VALUES ('20', '80', '4000')''')
 
              
