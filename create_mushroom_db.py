@@ -1,27 +1,23 @@
 import sqlite3
 import sys
-
-
-
-# print "Welcome, what do you want to do?"
-# print "1) Create a new DB?"
-# print "2) Delete existing DB and create new one?"
-# print "3) Exit"
-
+import os.path
 
 print "Used to create Mushroom DB, default filename is 'db.mushroom.sqlite3'"
-print "Else add argument to create DB with different name"
 
-s = raw_input('This WILL DELETE EXISTING DB, type "YES" to continue: ')
 
-if s != "YES":
-  print "Exiting"
-  sys.exit(0)
 
-try:
-  filename = sys.argv[1]
-except:
-  filename = 'db.mushroom.sqlite3'
+filename = 'db.mushroom.sqlite3'
+
+if os.path.exists(filename):
+  print "Found existing file!!!"
+  s = raw_input('This WILL DELETE EXISTING DB, type "YES" to continue: ')
+  if s == "YES":
+    print "Deleting File"
+    os.remove(filename)
+  else:
+    print "\nFile left unchanged, exiting\n"
+    sys.exit(0)
+
 
 conn = sqlite3.connect(filename)
 
@@ -46,11 +42,8 @@ curs.execute('''INSERT INTO triggers VALUES ('20', '80', '4000')''')
 conn.commit()             
              
 print "\n\nDatabase created, and contains:\n\n"
-import pdb; pdb.set_trace()
 
 for line in conn.iterdump():
   print line
-
-
 
 conn.close()
