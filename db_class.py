@@ -2,12 +2,17 @@
 ####Define Database being used
 import datetime
 import sqlite3
-
+import os
 
 class database:
   def __init__(self, name, size):
     self.filename = name
     self.size = size  # How many lines for the table to store data.
+    
+    if not os.path.exists(self.filename):
+      print "db File not found, please run \n>python create_mushroom_db.py"
+      exit(0)
+    
     self.conn = sqlite3.connect(self.filename) ##open file when starting instance
   
   def addreadings(self, time, temp1, temp2, hum1, hum2,c02):
