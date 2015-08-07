@@ -13,7 +13,6 @@ from graphClass import *
 
 
 ###Import GPI Library
-# 
 # sudo apt-get install python-dev python-rpi.gpio
 import RPi.GPIO as GPIO
 ###SETUP GPIO
