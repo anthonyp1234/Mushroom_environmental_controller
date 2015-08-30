@@ -22,10 +22,16 @@ HEAT_RELAY_PIN = 18
 HUMIDITY_RELAY_PIN = 19
 AIR_RELAY_PIN = 20
 
-GPIO.setup(HEAT_RELAY_PIN, GPIO.OUT)
-GPIO.setup(HUMIDITY_RELAY_PIN, GPIO.OUT)
-GPIO.setup(AIR_RELAY_PIN, GPIO.OUT)
-
+try:
+  GPIO.setup(HEAT_RELAY_PIN, GPIO.OUT)
+  GPIO.setup(HUMIDITY_RELAY_PIN, GPIO.OUT)
+  GPIO.setup(AIR_RELAY_PIN, GPIO.OUT)
+except:
+  GPIO.cleanup()
+  GPIO.setup(HEAT_RELAY_PIN, GPIO.OUT)
+  GPIO.setup(HUMIDITY_RELAY_PIN, GPIO.OUT)
+  GPIO.setup(AIR_RELAY_PIN, GPIO.OUT)  
+  
 GPIO.output(HEAT_RELAY_PIN, GPIO.LOW)
 GPIO.output(HUMIDITY_RELAY_PIN, GPIO.LOW)
 GPIO.output(AIR_RELAY_PIN, GPIO.LOW)
@@ -139,7 +145,7 @@ while True:
       humidity_relay.turn_off()
       print "humidity too high"
       
-   import RPi.GPIO as GPIO
+
 
 
   #Is time X Passed, if so trigger Air intake.
